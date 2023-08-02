@@ -205,10 +205,3 @@ class App
     @books[book_number - 1] if book_number.between?(1, @books.length)
   end
 end
-
-def main
-  app = App.new
-  app.run
-end
-
-main
