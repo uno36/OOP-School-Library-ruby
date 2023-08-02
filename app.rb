@@ -1,4 +1,3 @@
-# app.rb
 require_relative 'person'
 require_relative 'book'
 require_relative 'rental'
@@ -28,7 +27,7 @@ class App
     else
       puts 'Listing all books:'
       @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
-    end  
+    end
   end
 
   def list_people
@@ -37,7 +36,7 @@ class App
     else
       puts 'Listing all people:'
       @people.each { |person| puts "[#{person.class}] #{person.name}, ID: #{person.id}, Age: #{person.age}" }
-    end  
+    end
   end
 
   def create_person
@@ -54,19 +53,19 @@ class App
   end
 
   def create_student
-    print "Age: "
+    print 'Age: '
     age = gets.chomp.to_i
-    print "First Name: "
+    print 'First Name: '
     first_name = gets.chomp
-    print "Lats Name: "
-    last_name = gets.chomp    
+    print 'Last Name: '
+    last_name = gets.chomp
     full_name = "#{first_name} #{last_name}"
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp
     if parent_permission.downcase == 'n'
-      student = Student.new(generate_unique_id, age: age, parent_permission: false, name: full_name)
+      Student.new(generate_unique_id, age: age, parent_permission: false, name: full_name)
     elsif parent_permission.downcase == 'y'
-      student = Student.new(generate_unique_id, age: age, parent_permission: true, name: full_name)
+      Student.new(generate_unique_id, age: age, parent_permission: true, name: full_name)
     else
       puts 'Invalid Selection for parent permission'
       return
@@ -77,13 +76,13 @@ class App
   end
 
   def create_teacher
-    print "Age: "
+    print 'Age: '
     age = gets.chomp.to_i
-    print "First Name: "
+    print 'First Name: '
     first_name = gets.chomp
-    print "Last Name: "
-    last_name = gets.chomp    
-    print "Specialization:"
+    print 'Last Name: '
+    last_name = gets.chomp
+    print 'Specialization:'
     specialization = gets.chomp
     full_name = "#{first_name} #{last_name}"
     teacher = Teacher.new(generate_unique_id, specialization, age: age, name: full_name)
@@ -104,7 +103,6 @@ class App
   def create_rental
     puts 'Select a person from the list by number (not id):'
     list_people_with_numbers
-
     person_number = gets.chomp.to_i
     person = find_person_by_number(person_number)
 
@@ -115,7 +113,6 @@ class App
 
     puts 'Select a book from the list by number:'
     list_books_with_authors
-
     book_number = gets.chomp.to_i
     book = find_book_by_author(book_number)
 
