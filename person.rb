@@ -6,6 +6,7 @@ class Person < Nameable
   attr_accessor :name, :age, :rentals
 
   def initialize(id, age: nil, parent_permission: true, name: 'Unknown')
+    super()
     @id = id
     @name = name
     @age = age
@@ -19,6 +20,10 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def add_rental(book, date)
+    Rental.new(date, book, self)
   end
 
   private
