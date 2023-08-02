@@ -1,19 +1,16 @@
-class Nameable
-  def correct_name
-    raise NotImplementedError, 'You must implement the correct_name method.'
-  end
-end
+require_relative 'nameable'
+require_relative 'rental'
 
-class Person < Nameable
+class Person
   attr_reader :id
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rentals
 
-  def initialize(_id, age: nil, parent_permission: true, name: 'Unknown')
-    super()
-    @id = Random.rand(1..10_000)
+  def initialize(id, age: nil, parent_permission: true, name: 'Unknown')
+    @id = id
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
   def can_use_services?
